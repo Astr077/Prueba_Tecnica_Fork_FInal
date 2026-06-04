@@ -57,6 +57,19 @@ Permite a los administradores crear nuevas cuentas (asignando rol de usuario o a
 - Editar productos
 - Eliminar productos
 
+## 🛠️ Decisiones de Diseño y Alcance (Supuestos)
+
+Para cumplir con una correcta separación de responsabilidades y ofrecer una experiencia de usuario moderna y profesional, se tomaron las siguientes decisiones de desarrollo que complementan y aclaran los requerimientos básicos de la prueba técnica:
+
+### 🌟 Mejoras e Iniciativas Agregadas:
+- **Sistema de Autenticación y Autorización (Login/Register):** Aunque el PDF no detallaba un flujo de autenticación, se consideró indispensable implementarlo para garantizar de forma real la separación de responsabilidades y la seguridad de las operaciones entre **Administradores** (lectura y escritura) y **Usuarios Comunes** (solo lectura).
+- **Tema Oscuro (Dark Mode):** Se optó por un diseño de interfaz con tema oscuro moderno y armonioso para ofrecer una apariencia visual limpia, profesional y agradable al usuario.
+- **Panel de Gestión de Usuarios:** Se diseñó una interfaz interna exclusiva para administradores que permite crear nuevas cuentas (definiendo el rol) y eliminar cuentas de forma segura.
+
+### 🚫 Simplificaciones y Exclusiones Conscientes:
+- **Registro Simplificado:** Para mantener la agilidad del flujo y evitar complejidades innecesarias en la prueba técnica, el registro de usuarios solo solicita `usuario` y `contraseña`, omitiendo datos como correo electrónico, nombres o confirmaciones de contraseña.
+- **Restricción de Roles en Registro Público:** Por lógica de seguridad, los registros públicos se crean estrictamente con el rol de `usuario`. Solo un administrador autenticado puede designar y crear otros perfiles de administrador desde el panel de control.
+
 ## Requisitos
 
 Para ejecutar el proyecto de forma local (sin Docker), necesitas:
