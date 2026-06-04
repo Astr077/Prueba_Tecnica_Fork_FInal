@@ -187,6 +187,9 @@ const products = [
 ];
 
 async function runSeed() {
+  const maskedUri = MONGO_URI.replace(/:([^@]+)@/, ':******@');
+  console.log(`Iniciando seed. Conectando a MongoDB: ${maskedUri}`);
+
   await mongoose.connect(MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
