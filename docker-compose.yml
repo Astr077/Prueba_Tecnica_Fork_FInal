@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:6.0
+    container_name: catalogo-mongodb
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - catalogo-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: catalogo-backend
+    ports:
+      - '5000:5000'
+    environment:
+      - PORT=5000
+      - MONGO_URI=mongodb://mongodb:27017/catalogo-productos
+      - JWT_SECRET=unasecretafirmadetokenmassegura123!
+      - NODE_ENV=production
+    depends_on:
+      - mongodb
+    networks:
+      - catalogo-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: catalogo-frontend
+    ports:
+      - '3000:3000'
+    depends_on:
+      - backend
+    networks:
+      - catalogo-network
+
+volumes:
+  mongo_data:
+
+networks:
+  catalogo-network:
+    driver: bridge

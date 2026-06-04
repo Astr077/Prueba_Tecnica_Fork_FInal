@@ -1,0 +1,484 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f4f5f7;
+  font-family: Inter, system-ui, sans-serif;
+  color: #1d1d1f;
+}
+
+.app-shell {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.app-header {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.mode-toggle {
+  border: none;
+  border-radius: 999px;
+  background: #4f46e5;
+  color: #fff;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+}
+
+.filter-summary-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.filter-summary-card strong {
+  color: #4f46e5;
+}
+
+body.dark-mode .filter-summary-card {
+  background: #111827;
+  border-color: #374151;
+}
+
+body.dark-mode .filter-summary-card span,
+body.dark-mode .filter-summary-card strong {
+  color: #e5e7eb;
+}
+
+body.dark-mode,
+body.dark-mode .app-shell {
+  background: #111827;
+  color: #e5e7eb;
+}
+
+body.dark-mode .app-header,
+body.dark-mode .admin-card,
+body.dark-mode .product-list-card,
+body.dark-mode .dashboard-card,
+body.dark-mode .filter-summary-card,
+body.dark-mode .product-card,
+body.dark-mode .error-message {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+body.dark-mode .dashboard-item {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+body.dark-mode .dashboard-item span,
+body.dark-mode .dashboard-item .dashboard-value {
+  color: #e5e7eb;
+}
+
+body.dark-mode {
+  background: #060b17;
+}
+
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode .product-form input,
+body.dark-mode .product-form select {
+  background: #111827;
+  color: #e5e7eb;
+  border-color: #374151;
+}
+
+body.dark-mode .secondary-button,
+body.dark-mode .mode-toggle,
+body.dark-mode .form-actions button,
+body.dark-mode .card-actions button {
+  opacity: 0.95;
+}
+
+body.dark-mode .secondary-button {
+  background: #374151;
+  color: #e5e7eb;
+}
+
+body.dark-mode .cancel-button,
+body.dark-mode .delete-button,
+body.dark-mode .form-actions button,
+body.dark-mode .card-actions button:first-child {
+  opacity: 0.95;
+}
+
+body.dark-mode .product-card p,
+body.dark-mode .dashboard-item span,
+body.dark-mode .section-header h2,
+body.dark-mode .app-header h1 {
+  color: #e5e7eb;
+}
+
+.toolbar {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.error-message {
+  padding: 1rem;
+  background: #ffe5e5;
+  color: #a33838;
+  border-radius: 8px;
+}
+
+.dashboard-card {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(140px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.dashboard-item {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.dashboard-value {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 1.5rem;
+}
+
+.admin-card,
+.product-list-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.product-form {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.field-group {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.field-group label {
+  font-weight: 600;
+}
+
+.field-group input,
+.field-group select {
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 0.85rem;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.form-actions button {
+  flex: 1;
+  padding: 0.9rem 1rem;
+  border: none;
+  border-radius: 10px;
+  background: #4f46e5;
+  color: #fff;
+  cursor: pointer;
+}
+
+.cancel-button {
+  background: #9ca3af;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.secondary-button {
+  border: none;
+  border-radius: 10px;
+  background: #e5e7eb;
+  color: #111827;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+}
+
+.card-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.card-actions button {
+  flex: 1;
+  padding: 0.7rem 0.75rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.card-actions button:first-child {
+  background: #4f46e5;
+  color: #fff;
+}
+
+.delete-button {
+  background: #dc2626;
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .admin-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-card {
+    grid-template-columns: 1fr;
+  }
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.product-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  background: #fff;
+  padding: 1rem;
+}
+
+.product-card h3 {
+  margin: 0 0 0.5rem;
+}
+
+.product-card p {
+  margin: 0.35rem 0;
+}
+
+/* login flow styles */
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 1rem;
+}
+
+.login-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 16px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.login-header h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  color: #4f46e5;
+}
+
+.login-subtitle {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+body.dark-mode .login-card {
+  background: #1f2937;
+  border-color: #374151;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .login-subtitle {
+  color: #9ca3af;
+}
+
+body.dark-mode .success-message {
+  background: #064e3b !important;
+  color: #a7f3d0 !important;
+}
+
+/* User identity header widget */
+.user-widget {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.role-badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.role-badge.admin {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.role-badge.user {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+body.dark-mode .role-badge.admin {
+  background: #7f1d1d;
+  color: #fca5a5;
+}
+
+body.dark-mode .role-badge.user {
+  background: #1e3a8a;
+  color: #93c5fd;
+}
+
+/* Admin Tabs styles */
+.admin-tabs-container {
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.admin-tabs {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.admin-tabs .tab-button {
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 6px 6px 0 0;
+}
+
+.admin-tabs .tab-button:hover {
+  color: #4f46e5;
+  background: rgba(79, 70, 229, 0.05);
+}
+
+.admin-tabs .tab-button.active {
+  color: #4f46e5;
+  border-bottom-color: #4f46e5;
+  background: rgba(79, 70, 229, 0.08);
+}
+
+body.dark-mode .admin-tabs-container {
+  border-bottom-color: #374151;
+}
+
+body.dark-mode .admin-tabs .tab-button {
+  color: #9ca3af;
+}
+
+body.dark-mode .admin-tabs .tab-button:hover {
+  color: #818cf8;
+  background: rgba(129, 140, 248, 0.05);
+}
+
+body.dark-mode .admin-tabs .tab-button.active {
+  color: #818cf8;
+  border-bottom-color: #818cf8;
+  background: rgba(129, 140, 248, 0.1);
+}
+
+/* User Management Table styles */
+.user-management-section {
+  animation: fadeIn 0.3s ease;
+}
+
+.users-table-wrapper {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+}
+
+body.dark-mode .users-table-wrapper {
+  border-color: #374151;
+  background: #1f2937;
+}
+
+.users-table th {
+  font-weight: 600;
+  border-bottom: 2px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+body.dark-mode .users-table th {
+  border-bottom-color: #374151;
+  background: #111827;
+}
+
+.users-table tr:hover {
+  background: #f9fafb;
+}
+
+body.dark-mode .users-table tr:hover {
+  background: #2d3748;
+}
+
+.users-table td, .users-table th {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+body.dark-mode .users-table td, body.dark-mode .users-table th {
+  border-bottom-color: #374151;
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
