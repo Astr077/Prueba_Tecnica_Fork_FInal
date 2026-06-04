@@ -2,6 +2,21 @@
 
 Proyecto full-stack para administrar productos de una zapatería con bolsa y zapatos.
 
+## 🚀 Demo en Vivo (Producción)
+
+Puedes acceder a la aplicación desplegada en producción a través del siguiente enlace:
+
+👉 **[Catálogo de Productos en Vivo](https://prueba-tecnica-fork-f-inal.vercel.app/)**
+
+> [!IMPORTANT]
+> **Nota sobre la carga inicial (Servidor Gratuito):**
+> El servidor del backend está alojado en el plan gratuito de **Render**. Si no ha recibido visitas en los últimos 15 minutos, el servidor entra en estado de suspensión temporal.
+> Si al ingresar notas que los productos no aparecen de inmediato o el inicio de sesión tarda, **espera unos 50 segundos** a que el servidor se reactive ("despierte"). Una vez activo, el sistema responderá de forma instantánea.
+
+### Cuentas de prueba:
+* **Administrador (Control total):** `admin` / `Admin123!`
+* **Usuario Común (Solo lectura):** `user` / `User123!`
+
 ## Descripción
 
 Aplicación con backend en NestJS y frontend en React. Permite listar, buscar, filtrar, crear, editar y eliminar productos.
