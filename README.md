@@ -155,6 +155,64 @@ Prueba_Tecnica/
 └── README.md
 ```
 
+## 📐 Arquitectura y Diseño del Sistema
+
+Para comprender la estructura del proyecto y los flujos lógicos, se definieron los siguientes diagramas (soportados nativamente por GitHub para su visualización):
+
+### A. Arquitectura de Alto Nivel (3 Capas Desacoplada)
+```mermaid
+graph TD
+    Client["Navegador del Usuario (React SPA)"] -->|HTTPS / JSON + JWT Token| API["Servidor de API REST (NestJS)"]
+    API -->|Mongoose ODM| DB[("Base de Datos (MongoDB Atlas)")]
+```
+
+### B. Modelado de Datos (NoSQL Físico)
+```mermaid
+classDiagram
+    class User {
+        +ObjectId _id
+        +String username
+        +String password (bcrypt hash)
+        +String role ('admin' | 'user')
+        +Date createdAt
+        +Date updatedAt
+    }
+    class Product {
+        +ObjectId _id
+        +String nombre
+        +String color
+        +String talla
+        +String tipo ('zapato' | 'bolsa')
+        +Number precio
+        +Date createdAt
+        +Date updatedAt
+    }
+```
+
+### C. Flujo de Secuencia (Inicio de Sesión / Autenticación)
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Usuario as Frontend (React App)
+    participant AuthC as AuthController (NestJS)
+    participant AuthS as AuthService (NestJS)
+    participant DB as MongoDB Atlas
+
+    Usuario->>AuthC: POST /api/auth/login { username, password }
+    AuthC->>AuthS: validateUser(username, password)
+    AuthS->>DB: Buscar documento de usuario por username
+    DB-->>AuthS: Retorna objeto de usuario (con password hash)
+    AuthS->>AuthS: Compara contraseñas usando bcrypt.compare()
+    alt Credenciales Correctas
+        AuthS->>AuthS: Firma un JWT con la clave secreta y datos de usuario
+        AuthS-->>AuthC: Retorna access_token y datos de perfil
+        AuthC-->>Usuario: Responde 200 OK + JSON { access_token, user }
+    else Credenciales Incorrectas
+        AuthS-->>AuthC: Lanza excepción de seguridad
+        AuthC-->>Usuario: Responde 401 Unauthorized + Mensaje de error
+    end
+```
+
 ## Modelo de producto
 
 - nombre
